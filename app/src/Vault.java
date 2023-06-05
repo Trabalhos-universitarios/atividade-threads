@@ -1,11 +1,11 @@
 public class Vault {
+    private final int senhaCorreta;
 
-    public void vault(Integer password) {
+    public Vault(int senhaCorreta) {
+        this.senhaCorreta = senhaCorreta;
+    }
 
-        if (password == 123456) {
-            System.out.println("A senha foi hackeada pela thread: ");
-        } else {
-            System.out.println("Senha incorreta!");
-        }
+    public boolean vault(int senhaChutada) {
+        return senhaChutada == senhaCorreta;
     }
 }
