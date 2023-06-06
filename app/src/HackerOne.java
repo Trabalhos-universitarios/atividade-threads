@@ -1,4 +1,4 @@
-public class HackerOne implements Runnable {
+public class HackerOne extends Thread {
     private final Vault vault;
     private final long startTime;
 
@@ -9,21 +9,19 @@ public class HackerOne implements Runnable {
 
     @Override
     public void run() {
+        // Implemente aqui a lógica do HackerOne para tentar abrir o cofre
+        // Força bruta - Contador crescente
         int senhaChutada = 0;
-        boolean senhaEncontrada = false;
-
-        while (!senhaEncontrada && senhaChutada <= 99999) {
-            if (vault.vault(senhaChutada)) {
-                senhaEncontrada = true;
-                long elapsedTime = System.currentTimeMillis() - startTime;
-                System.out.println("HackerOne abriu o cofre com a senha: " + senhaChutada);
-                System.out.println("Tempo necessário: " + elapsedTime + " milissegundos");
-                System.exit(0);
-            } else {
-                senhaChutada++;
+        while (!vault.isCofreAberto() && senhaChutada <= 999999) {
+            if (vault.isSenhaCorreta(senhaChutada)) {
+                synchronized (System.out) {
+                    long endTime = System.currentTimeMillis();
+                    System.out.println("\nHackerOne abriu o cofre com a senha: " + senhaChutada);
+                    System.out.println("Tempo necessário: " + (endTime - startTime) + " milissegundos");
+                    System.exit(0); // Encerra o programa após a abertura do cofre
+                }
             }
+            senhaChutada++;
         }
-
-        System.out.println("HackerOne não conseguiu abrir o cofre.");
     }
 }

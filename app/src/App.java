@@ -1,24 +1,26 @@
 import java.util.Random;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        int senhaCorreta = generateRandomPassword(99999); // Gera uma senha aleatória
+        int senhaCorreta = generateRandomPassword(999999); // Gera uma senha aleatória de 6 dígitos
 
         Vault vault = new Vault(senhaCorreta);
         long startTime = System.currentTimeMillis();
 
         HackerOne hacker1 = new HackerOne(vault, startTime);
         HackerTwo hacker2 = new HackerTwo(vault, startTime);
-        Police police = new Police();
+        ProgressThread progressThread = new ProgressThread();
 
-        ExecutorService executorService = Executors.newFixedThreadPool(4);
-        executorService.submit(hacker1);
-        executorService.submit(hacker2);
-        executorService.submit(police);
+        hacker1.start();
+        hacker2.start();
+        progressThread.start();
 
-        executorService.shutdown();
+        // Aguardar a conclusão das threads
+        hacker1.join();
+        hacker2.join();
+        progressThread.join();
+
+        System.out.println("A polícia chegou e prendeu os hackers!");
     }
 
     private static int generateRandomPassword(int max) {

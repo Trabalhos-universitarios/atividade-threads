@@ -1,21 +1,24 @@
 public class Police extends Thread {
+    private static final int TEMPO_MAXIMO = 10000; // 10 segundos
+    private final HackerOne hacker1;
+    private final HackerTwo hacker2;
 
-    public Police() {}
+    public Police(HackerOne hacker1, HackerTwo hacker2) {
+        this.hacker1 = hacker1;
+        this.hacker2 = hacker2;
+    }
 
     @Override
     public void run() {
-        System.out.println("Tempo restante para a polícia chegar: 10 segundos");
-
-        for (int i = 9; i >= 0; i--) {
-            try {
-                Thread.sleep(1000);
-                System.out.println("Tempo restante para a polícia chegar: " + i + " segundos");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        try {
+            System.out.println("\nTempo restante para a polícia chegar: 10 segundos");
+            Thread.sleep(TEMPO_MAXIMO);
+            synchronized (System.out) {
+                System.out.println("A polícia chegou e prendeu os hackers!");
+                System.exit(0); // Encerra o programa após a chegada da polícia
             }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-
-        System.out.println("A polícia chegou! Os hackers estão presos.");
-        System.exit(0);
     }
 }
