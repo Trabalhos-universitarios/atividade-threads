@@ -1,11 +1,11 @@
-# atividade-threads
+# Atividade Threads em JAva
 
 Descrição da Atividade:
 Esta atividade tem como objetivo a utilização e demonstração da concorrência utilizando threads. 
-•	Imagine que queremos desenvolver um cofre para guardar dinheiro de forma segura. Precisamos testar quanto tempo levaria para hackers abrirem esse cofre descobrindo a senha.
-•	Teremos algumas threads de hackers tentando descobrir a senha na “força bruta” de forma concorrente.
-•	Teremos uma thread policial que irá ao nosso “socorro” na contagem de 10 segundos. Caso os hackers não tenham aberto o cofre nesse período, o policial irá prende-los. 
-•	O policial deverá mostrar o seu progresso de chegada enquanto a contagem acontece. Ou seja, a contagem do tempo restante que os hackers ainda tem para abrir o cofre deverá ser mostrada.
+- Imagine que queremos desenvolver um cofre para guardar dinheiro de forma segura. Precisamos testar quanto tempo levaria para hackers abrirem esse cofre descobrindo a senha.
+-	Teremos algumas threads de hackers tentando descobrir a senha na “força bruta” de forma concorrente.
+-	Teremos uma thread policial que irá ao nosso “socorro” na contagem de 10 segundos. Caso os hackers não tenham aberto o cofre nesse período, o policial irá prende-los. 
+-	O policial deverá mostrar o seu progresso de chegada enquanto a contagem acontece. Ou seja, a contagem do tempo restante que os hackers ainda tem para abrir o cofre deverá ser mostrada.
 
 
 ![image](https://github.com/Trabalhos-universitarios/atividade-threads/assets/66291657/fcf7a3db-0c12-4454-b688-36370c656209)
